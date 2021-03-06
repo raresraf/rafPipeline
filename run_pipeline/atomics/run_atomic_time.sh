@@ -12,4 +12,6 @@ if [ $? -ne 0 ]; then
 fi
 
 mkdir -p "$(dirname "$3")"
-perf stat --all-user "$1" < "$2" > /dev/null 2> "$3"
+((/usr/bin/time -v "$1" < "$2") > /dev/null) >"atomic_time/$3" 2>&1
+
+
