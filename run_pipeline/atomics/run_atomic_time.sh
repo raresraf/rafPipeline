@@ -12,6 +12,6 @@ if [ $? -ne 0 ]; then
 fi
 
 mkdir -p "$(dirname "$3")"
-((/usr/bin/time -v "$1" < "$2") > /dev/null) >"atomic_time/$3" 2>&1
+((/usr/bin/time -v "$1" < "$2") > /dev/null) > "$3" 2>&1
 
 
