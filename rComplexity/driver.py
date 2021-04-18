@@ -14,5 +14,6 @@ if __name__ == "__main__":
     X = np.array([1,2,3,4])
     y = np.array([0,1.2,4.3,9.6])
 
-    r = get_best_feature(X, y)
+    r, coef = get_best_feature(X, y)
     print(r)
+    print(coef)

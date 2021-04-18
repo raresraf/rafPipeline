@@ -1,13 +1,11 @@
 import numpy as np
-
 from sklearn.linear_model import LinearRegression
-from sklearn.metrics import mean_squared_error, r2_score
+from sklearn.metrics import mean_squared_error
 
-from rComplexity.features.feature_transformation import extract_features,LOG2_POLYNOMIAL_FEATURE_TYPE, NO_FEATURE_TYPE, POLYNOMIAL_FEATURE_TYPE, POWER_FEATURE_TYPE
-
+from rComplexity.features.feature_transformation import extract_features, LOG2_POLYNOMIAL_FEATURE_TYPE, \
+    POLYNOMIAL_FEATURE_TYPE, POWER_FEATURE_TYPE
 
 CONFIGS = [
-    (NO_FEATURE_TYPE, 1),
     (POLYNOMIAL_FEATURE_TYPE, 1),
     (POLYNOMIAL_FEATURE_TYPE, 2),
     (POLYNOMIAL_FEATURE_TYPE, 3),
@@ -32,6 +30,7 @@ CONFIGS = [
 def get_best_feature(X, y):
     best_rmse = np.inf
     best_config = None
+    best_coef = None
     for config in CONFIGS:
         feature_type = config[0]
         feature_val = config[1]
@@ -43,9 +42,8 @@ def get_best_feature(X, y):
 
         y_predicted = regression_model.predict(Xc)
         rmse = mean_squared_error(y, y_predicted)
-        # print(f"{feature_type} ({feature_val}): {rmse}")
         if rmse < best_rmse:
             best_rmse = rmse
             best_config = config
-
-    return best_config
+            best_coef = regression_model.coef_
+    return best_config, best_coef
