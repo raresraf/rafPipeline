@@ -66,5 +66,8 @@ def extract_factorial_features(X, _M):
     phi = np.ones((X.size, 2))
     for i in range(X.size):
         phi[i][0] = 1
-        phi[i][1] = np.math.factorial(X[i])
+        if X[i] < 100:
+            phi[i][1] = np.math.factorial(X[i])
+        else:
+            phi[i][1] = np.inf
     return phi

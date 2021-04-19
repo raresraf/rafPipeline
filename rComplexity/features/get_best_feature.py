@@ -60,6 +60,7 @@ CONFIGS = [
 
 
 def get_best_feature(X, y):
+    np.seterr(all='raise')
     best_rmse = np.inf
     best_config = None
     best_coef = None
@@ -80,4 +81,5 @@ def get_best_feature(X, y):
                 best_coef = regression_model.coef_
         except Exception:
             continue
+
     return best_config, best_coef
