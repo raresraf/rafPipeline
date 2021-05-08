@@ -10,7 +10,8 @@ from rComplexity.features.get_best_feature import get_best_feature
 
 if __name__ == "__main__":
     if len(sys.argv) <= 1:
-        print("Usage: python3 driver.py <path_to_metrics_directory> ")
+        print("Usage: python3 tailor.py <path_to_metrics_directory> ")
+        print("sample usage: python3 rComplexity/tailor.py ../TheOutputsCodeforces/processed/ ")
         sys.exit(-1)
 
     path = sys.argv[1]
@@ -33,7 +34,7 @@ if __name__ == "__main__":
                 X.append(int(k))
                 y.append(v)
 
-            processed[path] = path
+            processed["path"] = path
             if not processed.get("metrics", None):
                 processed["metrics"] = {}
 
