@@ -62,6 +62,7 @@ def extract_power_features(X, M):
         phi[i][1] = np.power(M, X[i])
     return phi
 
+
 def extract_factorial_features(X, _M):
     phi = np.ones((X.size, 2))
     for i in range(X.size):

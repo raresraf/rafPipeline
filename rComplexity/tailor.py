@@ -1,8 +1,8 @@
 # python3 rComplexity/tailor.py ../TheOutputsCodeforces/processed
 
-import sys
-import os
 import json
+import os
+import sys
 
 import numpy as np
 
@@ -21,7 +21,7 @@ if __name__ == "__main__":
         if name not in files:
             continue
 
-        path=os.path.join(root, name)
+        path = os.path.join(root, name)
         with open(path) as f:
             data = json.load(f)
 
@@ -42,16 +42,13 @@ if __name__ == "__main__":
             print(r)
             print(coef)
             processed["metrics"][metric] = {
-                "FEATURE_TYPE" : r[0],
-                "FEATURE_CONFIG" : r[1],
-                "INTERCEPT" : coef[0],
-                "R-VAL" : coef[1],
+                "FEATURE_TYPE": r[0],
+                "FEATURE_CONFIG": r[1],
+                "INTERCEPT": coef[0],
+                "R-VAL": coef[1],
             }
 
         outname = 'PROCESSED.RAF'
-        outpath=os.path.join(root, outname)
+        outpath = os.path.join(root, outname)
         with open(outpath, 'w', encoding='utf-8') as f:
             json.dump(processed, f, ensure_ascii=False, indent=4, sort_keys=True)
-
-
-
