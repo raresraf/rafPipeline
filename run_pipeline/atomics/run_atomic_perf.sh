@@ -6,7 +6,7 @@ if [ $# -ne 3 ]
     exit 1
 fi
 
-timeout 300 $1 < $2 &>/dev/null 
+timeout 60 $1 < $2 &>/dev/null 
 if [ $? -ne 0 ]; then
     exit 1
 fi
