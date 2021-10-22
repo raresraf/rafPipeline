@@ -20,6 +20,8 @@ if __name__ == "__main__":
         name = 'AGGREGATED.RAF'
         if name not in files:
             continue
+        if os.path.exists(os.path.join(root, 'PROCESSED.RAF')):
+            continue
 
         path = os.path.join(root, name)
         with open(path) as f:
